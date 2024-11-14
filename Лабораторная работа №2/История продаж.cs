@@ -9,7 +9,7 @@ namespace Лабораторная_работа__2
 {
     public class История_продаж
     {
-        //Dictionary<ГруппыПродукции,List<ЗаписьТовара>> СловарьПродаж = new Dictionary<ГруппыПродукции, List<ЗаписьТовара>>();
+        
         List<ЗаписьТовара> Запись = new List<ЗаписьТовара>();       
             
         public void НоваяЗапись(ЗаписьТовара з)
@@ -18,8 +18,16 @@ namespace Лабораторная_работа__2
         }
         public string ConwertString()
         {
-            string sasSDA = "DSADS";
-                return sasSDA;
+            string res = " ";
+            
+            for (int i = 0 ; i < Запись.Count; i++)
+            {
+                ЗаписьТовара s = Запись[i];
+                res += Convert.ToString(s.День);
+                res += Convert.ToString(s.Количество);
+                res +=s.Товар.СкажиНазвание();
+            }
+            return res;
         }
     }
 
