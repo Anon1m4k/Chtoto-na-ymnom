@@ -20,6 +20,5 @@ namespace ClassLib
             { nameof(Prise), "Цена"},
             { nameof(Group), "Группа"},
         };
-
     }
 }

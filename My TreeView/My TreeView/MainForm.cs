@@ -25,7 +25,7 @@ namespace My_TreeView
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            {
+            /*{
                 treeData_.Add(new TreeNodeModels("Магнит"));
                 var drinksNode = treeData_[0];
 
@@ -41,20 +41,22 @@ namespace My_TreeView
                 Алкогольные.AddChildNode("Вино из Магнита");
                 Алкогольные.AddChildNode("Водка из Магнита");
             }
+            {
                 treeData_.Add(new TreeNodeModels("Пятёрочка"));
-            var drinksNodee = treeData_[1];
+                var drinksNodee = treeData_[1];
 
-            var Негазированныеe = drinksNodee.AddChildNode("Негазированные");
-            Негазированныеe.AddChildNode("Яблочный сок из Пятёрочки");
-            Негазированныеe.AddChildNode("Вишнёвый сок из Пятёрочки");
+                var Негазированныеe = drinksNodee.AddChildNode("Негазированные");
+                Негазированныеe.AddChildNode("Яблочный сок из Пятёрочки");
+                Негазированныеe.AddChildNode("Вишнёвый сок из Пятёрочки");
 
-            var Газированныеe = drinksNodee.AddChildNode("Газированные");
-            Газированныеe.AddChildNode("Колла из Пятёрочки");
-            Газированныеe.AddChildNode("Спрайт из Пятёрочки");
+                var Газированныеe = drinksNodee.AddChildNode("Газированные");
+                Газированныеe.AddChildNode("Колла из Пятёрочки");
+                Газированныеe.AddChildNode("Спрайт из Пятёрочки");
 
-            var Алкогольныеe = drinksNodee.AddChildNode("Алкогольные");
-            Алкогольныеe.AddChildNode("Вино из Пятёрочки");
-            Алкогольныеe.AddChildNode("Водка из Пятёрочки");
+                var Алкогольныеe = drinksNodee.AddChildNode("Алкогольные");
+                Алкогольныеe.AddChildNode("Вино из Пятёрочки");
+                Алкогольныеe.AddChildNode("Водка из Пятёрочки");
+            }*/
 
             FillTreeNodeCollection(treeData_, MyTreeView.Nodes);
             MyTreeView.ExpandAll();
@@ -102,13 +104,45 @@ namespace My_TreeView
                 }
             }
         }
-
+        private const string Путь_к_файлу = "Напитки_по_магазинам.csv";
         private void сохранить_Click(object sender, EventArgs e)
         {
-
+            TreeNodeModels.save_CSV(Путь_к_файлу, treeData_);
+            MessageBox.Show($"Структура дерева сохранена в файл {Путь_к_файлу}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void загрузить_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*", Title = "Выберите CSV файл для загрузки" })
+                {
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string путьКФайлу = openFileDialog.FileName;
+                        var loadedTreeData = TreeNodeModels.Load_CSV(путьКФайлу);
+
+                        MyTreeView.Nodes.Clear();
+                        MyTreeView.Nodes.AddRange(loadedTreeData.Select(CreateTreeNode).ToArray());
+
+                        MessageBox.Show($"Структура дерева загружена из файла {путьКФайлу}", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка при загрузке файла: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private TreeNode CreateTreeNode(TreeNodeModels treeNodeModel)
+        {
+            TreeNode treeNode = new TreeNode(treeNodeModel.Name);
+            foreach (var child in treeNodeModel.Children)
+            {
+                treeNode.Nodes.Add(CreateTreeNode(child)); // Рекурсивное добавление дочерних узлов
+            }
+            return treeNode;
+        }
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }

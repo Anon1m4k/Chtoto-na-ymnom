@@ -79,8 +79,15 @@ namespace ClassLib.Models
                 Prise = 150,
                 Group = "Алкогольные",
             });
-            
-                Drinks.Add(new Drink
+            Drinks.Add(new Drink
+            {
+                Name = "Водка из Магнита",
+                Volume = "100мл",
+                Prise = 150,
+                Group = "Алкогольные",
+            });
+
+            Drinks.Add(new Drink
             {
                 Name = "Вино из Пятёрочки",
                 Volume = "100мл",
