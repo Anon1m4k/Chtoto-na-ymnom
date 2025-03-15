@@ -9,13 +9,10 @@ namespace ClassLib.Models
 {
     public class DrinksModel
     {
-        public List<Drink> Drinks { get; }
-       
-
+        public List<Drink> Drinks { get; }      
         public DrinksModel()
         {
             Drinks = new List<Drink>();
-
             Drinks.Add(new Drink
             {
                 Name = "Яблочный сок из Магнита",

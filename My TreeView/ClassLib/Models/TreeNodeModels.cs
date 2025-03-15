@@ -5,21 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace ClassLib.Models
 {
     public class TreeNodeModels
     {
         public string Name { get; set; }
-
         public List<TreeNodeModels> Children { get; }
-
         public TreeNodeModels(string name)
         {
             Name = name;
             Children = new List<TreeNodeModels>();
         }
-
         public TreeNodeModels AddChildNode(string text)
         {
             TreeNodeModels node = new TreeNodeModels(text);
@@ -48,7 +44,6 @@ namespace ClassLib.Models
         {
             var nodes = new Dictionary<string, TreeNodeModels>();
             List<TreeNodeModels> treeData = new List<TreeNodeModels>();
-
             using (StreamReader reader = new StreamReader(Путь_к_файлу, Encoding.UTF8))
             {
                 string line;
@@ -70,7 +65,6 @@ namespace ClassLib.Models
                         nodes[parentName] = new TreeNodeModels(parentName);
                         treeData.Add(nodes[parentName]); // Добавляем в корневые узлы
                     }
-
                     // Создаем дочерний узел и добавляем его к родителю
                     TreeNodeModels parentNode = nodes[parentName];
                     TreeNodeModels childNode = new TreeNodeModels(childName);

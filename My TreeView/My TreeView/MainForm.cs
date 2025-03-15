@@ -60,10 +60,14 @@ namespace My_TreeView
 
             FillTreeNodeCollection(treeData_, MyTreeView.Nodes);
             MyTreeView.ExpandAll();
-            Table.Columns.Add("Name", "Название");
+
+            
+            Table.DataSource = bild;
+
+            /*Table.Columns.Add("Name", "Название");
             Table.Columns.Add("Volume", "Объём");
             Table.Columns.Add("Prise", "Цена");
-            Table.Columns.Add("Group", "Группа");
+            Table.Columns.Add("Group", "Группа");*/
                             
             FillTableAliases();
         }
@@ -99,8 +103,10 @@ namespace My_TreeView
                 Drink Dr = DrinksModel_.GetName(e.Node.Text);
                 if (Dr != null)
                 {
-                    object[] newRow = { Dr.Name, Dr.Volume, Dr.Prise, Dr.Group };
-                    Table.Rows.Add(newRow);
+                    //object[] newRow = { Dr.Name, Dr.Volume, Dr.Prise, Dr.Group };
+                    //Table.Rows.Add(newRow);
+
+                    bild.Add(Dr);
                 }
             }
         }
@@ -142,9 +148,10 @@ namespace My_TreeView
             }
             return treeNode;
         }
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
+        // private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        //{
 
-        }
+        // }
+        BindingList<Drink> bild = new BindingList<Drink>();
     }
 }
