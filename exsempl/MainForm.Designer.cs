@@ -1,6 +1,6 @@
 ﻿namespace exsempl
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -40,37 +40,41 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(220, 42);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(240, 150);
             this.dataGridView1.TabIndex = 0;
             // 
             // КДобавить
             // 
-            this.КДобавить.Location = new System.Drawing.Point(220, 227);
+            this.КДобавить.Location = new System.Drawing.Point(220, 209);
             this.КДобавить.Name = "КДобавить";
             this.КДобавить.Size = new System.Drawing.Size(75, 23);
             this.КДобавить.TabIndex = 1;
             this.КДобавить.Text = "Добавить";
             this.КДобавить.UseVisualStyleBackColor = true;
+            this.КДобавить.Click += new System.EventHandler(this.КДобавить_Click);
             // 
             // КУдалить
             // 
-            this.КУдалить.Location = new System.Drawing.Point(385, 227);
+            this.КУдалить.Location = new System.Drawing.Point(385, 209);
             this.КУдалить.Name = "КУдалить";
             this.КУдалить.Size = new System.Drawing.Size(75, 23);
             this.КУдалить.TabIndex = 2;
             this.КУдалить.Text = "Удалить";
             this.КУдалить.UseVisualStyleBackColor = true;
+            this.КУдалить.Click += new System.EventHandler(this.КУдалить_Click);
             // 
             // КРедактировать
             // 
-            this.КРедактировать.Location = new System.Drawing.Point(295, 279);
+            this.КРедактировать.Location = new System.Drawing.Point(220, 251);
             this.КРедактировать.Name = "КРедактировать";
-            this.КРедактировать.Size = new System.Drawing.Size(93, 23);
+            this.КРедактировать.Size = new System.Drawing.Size(240, 23);
             this.КРедактировать.TabIndex = 3;
             this.КРедактировать.Text = "Редактировать";
             this.КРедактировать.UseVisualStyleBackColor = true;
+            this.КРедактировать.Click += new System.EventHandler(this.КРедактировать_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -79,7 +83,7 @@
             this.Controls.Add(this.КУдалить);
             this.Controls.Add(this.КДобавить);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

@@ -16,5 +16,19 @@ namespace exsempl
         {
             InitializeComponent();
         }
+        public Student GetObject()
+        {
+            Student S = new Student();
+            S.Name = textBoxName.Text;
+            S.Group = textBoxGroup.Text;
+            S.Age = (int)numericUpDownAge.Value;
+            return S;
+        }
+        public void SetObject(Student stud)
+        {  
+            textBoxName.Text = stud.Name;
+            textBoxGroup.Text = stud.Group;
+            numericUpDownAge.Value = stud.Age;  
+        }
     }
 }
